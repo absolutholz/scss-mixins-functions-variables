@@ -1,0 +1,38 @@
+///
+/// Mixin for creating a triangle shape with CSS, based on Item No. 4 of the provided link.
+///
+/// @link https://engageinteractive.co.uk/blog/top-10-scss-mixins
+///
+/// @group Shapes
+///
+/// @param {String} $color [inherit] - Color of the triangle
+/// @param {Length} $direction [right] - Direction the triangle is to point
+/// @param {Length} $size [1em] - Size of the triangle's primary axis
+/// @param {Length} $secondary-axis-size [false] - Size of the triangle's secondary axis
+///
+@mixin css-triangle($color: inherit, $direction: "right", $size: 1em, $secondary-axis-size: false) {
+	@if not $secondary-axis-size {
+		$secondary-axis-size: $size;
+	}
+
+	@if $direction == "down" {
+		border-left: $secondary-axis-size solid transparent;
+		border-right: $secondary-axis-size solid transparent;
+		border-top: $size solid $color;
+	} @else if $direction == "up" {
+		border-bottom: $size solid $color;
+		border-left: $secondary-axis-size solid transparent;
+		border-right: $secondary-axis-size solid transparent;
+	} @else if $direction == "right" {
+		border-bottom: $secondary-axis-size solid transparent;
+		border-left: $size solid $color;
+		border-top: $secondary-axis-size solid transparent;
+	} @else if  $direction == "left" {
+		border-bottom: $secondary-axis-size solid transparent;
+		border-right: $size solid $color;
+		border-top: $secondary-axis-size solid transparent;
+	}
+
+	height: 0;
+	width: 0;
+}
