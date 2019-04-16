@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "sass-lint scss/**/*.scss --verbose --no-exit",
-    "document": "sassdoc scss/**/*.scss --dest docs --verbose"
+    "document": "sassdoc scss/**/*.scss --dest docs --verbose",
+    "build": "npm run lint && npm run document"
   },
   "keywords": [
     "scss",
