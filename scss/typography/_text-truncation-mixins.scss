@@ -3,11 +3,10 @@
 ///
 /// @link https://engageinteractive.co.uk/blog/top-10-scss-mixins 10 Sass (SCSS) mixins you should be using in your projects: No. 10
 ///
+/// @group Typography
 /// @author Jamie Wright
 ///
 /// @param $truncation-boundary [100%] - The maximum width of the text to truncate
-///
-/// @output CSS styles needed for textual ellipsis trunctation
 ///
 @mixin truncate-typography ($truncation-boundary: 100%) {
 	max-width: $truncation-boundary;

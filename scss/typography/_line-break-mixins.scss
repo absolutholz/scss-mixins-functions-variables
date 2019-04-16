@@ -1,0 +1,22 @@
+///
+/// Enable browser-assisted line breaking, optionally via hyphenation.
+///
+/// @group Typography
+/// @author absolutholz
+///
+/// @link https://kenneth.io/blog/2012/03/04/word-wrapping-hypernation-using-css/
+/// @link https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+///
+/// @param {Boolean} $break-with-hyphens - Should words be broken with hyphens
+///
+@mixin line-break($break-with-hyphens: true) {
+	overflow-wrap: break-word;
+	// sass-lint:disable property-sort-order
+	word-wrap: break-word;
+	word-break: break-all; // This is the dangerous one in WebKit, as it breaks things wherever
+	// sass-lint:disable no-duplicate-properties, property-sort-order
+	word-break: break-word; // Non standard for webkit
+	@if ($break-with-hyphens) {
+		hyphens: auto;
+	}
+}
