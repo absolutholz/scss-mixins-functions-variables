@@ -1,0 +1,31 @@
+{
+  "name": "scss-mixins-functions-variables",
+  "version": "1.0.0",
+  "description": "A collection of SCSS Mixins, Functions and Variables.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "sass-lint scss/**/*.scss --verbose --no-exit",
+    "document": "sassdoc scss/**/*.scss --dest docs --verbose"
+  },
+  "keywords": [
+    "scss",
+    "sass",
+    "mixins",
+    "functions",
+    "variables"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/absolutholz/scss-mixins-and-functions.git"
+  },
+  "author": "absolutholz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/absolutholz/scss-mixins-and-functions/issues"
+  },
+  "homepage": "https://github.com/absolutholz/scss-mixins-and-functions#readme",
+  "devDependencies": {
+    "sass-lint": "^1.12.1",
+    "sassdoc": "^2.6.0"
+  }
+}

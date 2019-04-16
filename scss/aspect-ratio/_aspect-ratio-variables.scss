@@ -1,0 +1,59 @@
+///
+/// Some standard apect ratios as defined on the linked wikipedia page
+///
+/// @group Aspect Ratios
+/// @author absolutholz
+///
+/// @link https://en.wikipedia.org/wiki/Aspect_ratio_(image)
+///
+$aspect-ratios: (
+	"1x1": (
+		"description": "1:1 - Square; Used in some social networks, and in few devices",
+		"dimensions": 1 1,
+	),
+
+	"5x4": (
+		"description": "5:4 - Early television & large-format computer monitors",
+		"dimensions": 5 4,
+	),
+
+	"4x3": (
+		"description": "4:3 - Traditional television & computer monitor standard",
+		"dimensions": 4 3,
+	),
+
+	"11x8": (
+		"description": "11:8 - Academy standard film aspect ratio",
+		"dimensions": 11 8,
+	),
+
+	"3x2": (
+		"description": "3:2 - Classic 35 mm still photographic film",
+		"dimensions": 3 2,
+	),
+
+	"16x10": (
+		"description": "16:10 - A common computer screen ratio",
+		"dimensions": 16 10,
+	),
+
+	"16x9": (
+		"description": "16:9 - HD video standard",
+		"dimensions": 16 9,
+	),
+
+	"golden": (
+		"description": "1.618:1 - The golden ratio",
+		"dimensions": 1.618 1,
+	),
+
+	"silver": (
+		"description": "2.414:1 - The silver ratio",
+		"dimensions": 2.414 1,
+	),
+
+	"5x3": (
+		"description": "5:3 - A common European widescreen standard",
+		"dimensions": 5 3,
+	),
+) !default;
