@@ -1,0 +1,68 @@
+////
+/// See also Bootstrap 4 (beta) Reboot stack variables
+///
+/// @group Visibility
+/// @link http://davidwalsh.name/html5-boilerplate Style Scavenger: 7 CSS Snippets to Borrow from HTML5 Boilerplate
+/// @link https://accessible360.com/accessible360-blog/use-aria-label-screen-reader-text/ Should I use an aria-label or screen-reader only text?
+///
+////
+
+///
+/// `clip` is deprecated in CSS3. This variable controls whether it should be used in the visibility mixins.
+///
+/// @author absolutholz
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/clip clip @ MDN web docs
+///
+/// @type Boolean
+///
+$support-css-clip: false !default;
+
+///
+/// Visibly hide an element, but have it available for screenreaders
+///
+/// @author David Walsh
+/// @author absolutholz
+///
+@mixin visually-hidden () {
+	border: 0;
+	@if ($support-css-clip) {
+		clip: rect(0 0 0 0);
+	}
+	clip-path: polygon(0 0, 0 0, 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+///
+/// Remove styles for visually hiding an element via the `visually-hidden` mixin
+///
+/// @author absolutholz
+///
+@mixin visually-hidden-destroy () {
+	@if ($support-css-clip) {
+		clip: auto;
+	}
+	clip-path: auto;
+	height: auto;
+	margin: 0;
+	overflow: auto;
+	position: static;
+	width: auto;
+}
+
+///
+/// Visually hide an element, but allow it to be focusable when navigated to via the keyboard
+///
+/// @author David Walsh
+/// @author absolutholz
+///
+@mixin visually-hidden-focusable () {
+	&:focus,
+	&:active {
+		@include visually-hidden-destroy();
+	}
+}
