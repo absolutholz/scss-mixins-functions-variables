@@ -59,3 +59,15 @@
 @mixin fixed($args...) {
 	@include position(fixed, $args...);
 }
+
+///
+/// Shorthand mixin for sticky positioning
+///
+/// Serves as an alias for `position(sticky, ...)`
+///
+/// @param {Arglist} $args - Offsets
+///
+/// @require {mixin} position
+@mixin sticky($args...) {
+	@include position(sticky, $args...);
+}
