@@ -56,4 +56,14 @@ $aspect-ratios: (
 		"description": "5:3 - A common European widescreen standard",
 		"dimensions": 5 3,
 	),
+
+	"1.85x1": (
+		"description": "1.85:1 - A common US widescreen cinema standard",
+		"dimensions": 1.85 1,
+	),
+
+	"widescreen": (
+		"description": "2.39:1 - A current widescreen cinema standard",
+		"dimensions": 2.39 1,
+	),
 ) !default;
