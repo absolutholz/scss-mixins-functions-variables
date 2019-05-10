@@ -35,7 +35,7 @@
 /// @param {Number} $decimal-accuracy [2] - The number of decimal places to which the result should be rounded.
 ///
 @function calculate-aspect-ratio($ratio: false, $x: 1, $y: false, $unit: "%", $decimal-accuracy: 2) {
-	$return: '';
+	$return: "";
 	$x-size: $x;
 	$y-size: $y;
 
@@ -60,7 +60,7 @@
 		$return: decimal-round(($y-size / $x-size) * 100, $decimal-accuracy);
 
 	} @else {
-		@warn 'No valid aspect ratio could be found for ratio: #{ $ratio }, x: { $x }, y: { $y }.';
+		@warn "No valid aspect ratio could be found for ratio: #{ $ratio }, x: { $x }, y: { $y }.";
 		@return 100#{unquote($unit)};
 	}
 
