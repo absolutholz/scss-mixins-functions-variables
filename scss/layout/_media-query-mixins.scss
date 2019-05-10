@@ -17,18 +17,32 @@
 ///
 /// @output - A media query around the `@content`
 ///
-/// @example
+/// @example scss - SCSS usage
 /// 	@include mq(sm) {
-/// 		// CSS properties to be applied at a minimum width of the `sm` setting
-/// 	}
+/// 		font-size: 1rem;
+///		}
+/// @example css - CSS output
+/// 	@media mq(min-width: 576px) {
+/// 		font-size: 1rem;
+///		}
 ///
-/// 	@include mq($max-width: 100vh) {
-/// 		// CSS properties to be applied up to a maximum width of 100vh
-/// 	}
-///
+/// @example scss - SCSS usage
 /// 	@include mq(md, lg) {
-/// 		// CSS properties to be applied between the `md` and `lg` settings
+/// 		font-size: 1rem;
 /// 	}
+/// @example css - CSS output
+/// 	@include mq(min-width: 768px, max-width: calc(960px - 1px)) {
+/// 		font-size: 1rem;
+/// 	}
+///
+/// @example scss - SCSS usage - custom breakpoint
+/// 	@include mq($max-width: 100vh) {
+/// 		font-size: 1rem;
+/// 	}
+/// @example css - CSS output - custom breakpoint
+/// 	@media mq(max-width: 100vh) {
+/// 		font-size: 1rem;
+///		}
 ///
 @mixin mq ($min-width: false, $max-width: false, $breakpoint-map: $breakpoints) {
 	@if (is-string($min-width)) {

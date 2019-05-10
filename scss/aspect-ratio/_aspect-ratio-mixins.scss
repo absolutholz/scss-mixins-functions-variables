@@ -17,6 +17,29 @@
 ///
 /// @output Padding-top value to create the desired aspect ratio, either nested directly under the parent selector or, optionally, as a before pseudo element.
 ///
+/// @example scss - SCSS usage - Create a pseudo element with the passed keyword aspect ratio from `$aspect-ratios` Map
+///		.selector {
+///			@include aspect-ratio-box(true, "4x3");
+///		}
+/// @example css - CSS output
+///		.selector::before {
+///			content: "";
+///			display: block;
+///			padding-top: 75%;
+///			position: relative;
+///			width: 100%;
+///		}
+///
+/// @example scss - SCSS usage - Custom ratio passed as individual `x` and `y` and without creating a pseudo element.
+///		.selector {
+///			@include aspect-ratio-box($x: 42, $y: 24, $unit: vw);
+///		}
+/// @example css - CSS output
+///		.selector {
+///			padding-top: 57.14vw;
+///			position: relative;
+///		}
+///
 @mixin aspect-ratio-box($pseudo: false, $args...) {
 	$padding: calculate-aspect-ratio($args...);
 

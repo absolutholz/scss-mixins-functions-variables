@@ -1,29 +1,11 @@
-///
-/// Create a ratio map. Ideally not one already defined in the $aspect-ratios variable
-///
-/// @group Aspect Ratios
-/// @author absolutholz
-///
-/// @param {List} $dimensions - A list of x and y dimensions (ex: `1 1` or `16 9`)
-/// @param {String} $description [""] - A brief description of the ratio
-/// @param {String} $key [""] - The key for the generated map (ex: "1x1" or "16x9"). If an empty or no string is passed, one will be generated from the dimensions in the format `"[x]x[y]"`.
-///
-///	@return {Map} - ```($key: ("description": $description, "dimensions": $dimensions))```
-///
-@function create-ratio($dimensions, $description: "", $key: "") {
-	@if ($key == "") {
-		$key: "#{nth($dimensions, 1)}x#{nth($dimensions, 2)}";
-	}
-
-	@return ($key: (
-		"description": $description,
-		"dimensions": $dimensions,
-	));
-}
-
 @import "../type-checking/type-checking-functions";
 @import "../math/rounding-functions";
 @import "aspect-ratio-variables";
+
+////
+/// @group Aspect Ratios
+/// @author absolutholz
+////
 
 ///
 /// Get the calculated relative vertical aspect ratio for given values, either as a SASS list, map or string, the latter of which is sought in the `$aspect-ratios` variable.
@@ -33,6 +15,28 @@
 /// @param {Number} $y [1] - The y (vertical) value of the desired ratio
 /// @param {String} $unit ["%"] - The default CSS unit to be used. Most likely, if not the default `%` then maybe `vw`.
 /// @param {Number} $decimal-accuracy [2] - The number of decimal places to which the result should be rounded.
+///
+/// @return {Number} - A number representing the vertical ratio with respect to the passed arguments
+///
+/// @throws Warning - If no valid aspect ratio could be acertained by the given parameters. Only a warning, a result of 100[unit] will still be returned.
+///
+/// @example scss - SCSS usage - Keyword aspect ratio from `$aspect-ratios` Map
+///		.selector {
+///			padding-bottom: calculate-aspect-ratio("widescreen");
+///		}
+/// @example css - CSS output
+///		.selector {
+///			padding-bottom: 41.84%;
+///		}
+///
+/// @example scss - SCSS usage - Custom ratio passed as a List
+///		.selector {
+///			min-height: calculate-aspect-ratio(16 9, $unit: vw);
+///		}
+/// @example css - CSS output
+///		.selector {
+///			min-height: 56.25vw;
+///		}
 ///
 @function calculate-aspect-ratio($ratio: false, $x: 1, $y: false, $unit: "%", $decimal-accuracy: 2) {
 	$return: "";
@@ -69,4 +73,24 @@
 	}
 
 	@return $return;
+}
+
+///
+/// Create a ratio map. Ideally not one already defined in the $aspect-ratios variable
+///
+/// @param {List} $dimensions - A list of x and y dimensions (ex: `1 1` or `16 9`)
+/// @param {String} $description [""] - A brief description of the ratio
+/// @param {String} $key [""] - The key for the generated map (ex: "1x1" or "16x9"). If an empty or no string is passed, one will be generated from the dimensions in the format `"[x]x[y]"`.
+///
+///	@return {Map} - ```($key: ("description": $description, "dimensions": $dimensions))```
+///
+@function create-ratio($dimensions, $description: "", $key: "") {
+	@if ($key == "") {
+		$key: "#{nth($dimensions, 1)}x#{nth($dimensions, 2)}";
+	}
+
+	@return ($key: (
+		"description": $description,
+		"dimensions": $dimensions,
+	));
 }
