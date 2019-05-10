@@ -1,71 +1,174 @@
 ////
-/// A collection of function for advanced type checking
+/// A collection of function for simple and advanced type checking.
 ///
-/// @author Hugo Giraudel
 /// @group Type Checking
+///
+/// @link https://sass-lang.com/documentation/functions/meta#type-of
 ///
 /// @param $value - Value to check the type of
 ///
 /// @return {Bool}
 ///
-/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
-////
 
+///
+/// @author absolutholz
+///
+@function is-string($value) {
+	@return type-of($value) == "string";
+}
+
+///
+/// @author absolutholz
+///
+@function is-boolean($value) {
+	@return type-of($value) == "bool";
+}
+
+///
+/// @author absolutholz
+///
+@function is-color($value) {
+	@return type-of($value) == "color";
+}
+
+///
+/// @author absolutholz
+///
+@function is-list($value) {
+	@return type-of($value) == "list";
+}
+
+///
+/// @author absolutholz
+///
+@function is-map($value) {
+	@return type-of($value) == "map";
+}
+
+///
+/// @author absolutholz
+///
+@function is-null($value) {
+	@return type-of($value) == "null";
+}
+
+///
+/// @author absolutholz
+///
+@function is-function($value) {
+	@return type-of($value) == "function";
+}
+
+///
+/// @author absolutholz
+///
+@function is-argument-list($value) {
+	@return type-of($value) == "arglist";
+}
+
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-number($value) {
 	@return type-of($value) == "number";
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-time($value) {
 	@return is-number($value) and index("ms" "s", unit($value)) != null;
 }
 
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-duration($value) {
 	@return is-time($value);
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-angle($value) {
 	@return is-number($value) and index("deg" "rad" "grad" "turn", unit($value)) != null;
 }
 
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-frequency($value) {
 	@return is-number($value) and index("Hz" "kHz", unit($value)) != null;
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-integer($value) {
 	@return is-number($value) and round($value) == $value;
 }
 
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-relative-length($value) {
 	@return is-number($value) and index("em" "ex" "ch" "rem" "vw" "vh" "vmin" "vmax", unit($value)) != null;
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-absolute-length($value) {
 	@return is-number($value) and index("cm" "mm" "in" "px" "pt" "pc", unit($value)) != null;
 }
 
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-percentage($value) {
 	@return is-number($value) and unit($value) == "%";
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-length($value) {
 	@return is-relative-length($value) or is-absolute-length($value);
 }
 
 ///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
+///
 @function is-resolution($value) {
 	@return is-number($value) and index("dpi" "dpcm" "dppx", unit($value)) != null;
 }
 
+///
+/// @author Hugo Giraudel
+///
+/// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-position($value) {
 	@return is-length($value) or is-percentage($value) or index("top" "right" "bottom" "left" "center", $value) != null;
