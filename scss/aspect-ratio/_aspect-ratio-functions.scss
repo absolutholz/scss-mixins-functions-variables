@@ -20,3 +20,53 @@
 		"dimensions": $dimensions,
 	));
 }
+
+@import "../type-checking/type-checking-functions";
+@import "../math/rounding-functions";
+@import "aspect-ratio-variables";
+
+///
+/// Get the calculated relative vertical aspect ratio for given values, either as a SASS list, map or string, the latter of which is sought in the `$aspect-ratios` variable.
+///
+/// @param {List|Map|String} $ratio [false] - The complete ratio. Use either this argument OR the next two.
+/// @param {Number} $x [1] - The x (horizontal) value of the desired ratio
+/// @param {Number} $y [1] - The y (vertical) value of the desired ratio
+/// @param {String} $unit ["%"] - The default CSS unit to be used. Most likely, if not the default `%` then maybe `vw`.
+/// @param {Number} $decimal-accuracy [2] - The number of decimal places to which the result should be rounded.
+///
+@function calculate-aspect-ratio($ratio: false, $x: 1, $y: false, $unit: "%", $decimal-accuracy: 2) {
+	$return: '';
+	$x-size: $x;
+	$y-size: $y;
+
+	@if ($ratio) {
+		@if (is-list($ratio)) {
+			$x-size: nth($ratio, 1);
+			$y-size: nth($ratio, 2);
+
+		} @else if (is-map($ratio) and map-has-key($ratio, "x") and map-has-key($ratio, "y")) {
+			$x-size: map-get($ratio, "x");
+			$y-size: map-get($ratio, "y");
+
+		} @else if (is-string($ratio) and map-has-key($aspect-ratios, $ratio)) {
+			$map: map-get($aspect-ratios, $ratio);
+			$list: map-get($map, "dimensions");
+			$x-size: nth($list, 1);
+			$y-size: nth($list, 2);
+		}
+	}
+
+	@if (is-number($x-size) and is-number($y-size)) {
+		$return: decimal-round(($y-size / $x-size) * 100, $decimal-accuracy);
+
+	} @else {
+		@warn 'No valid aspect ratio could be found for ratio: #{ $ratio }, x: { $x }, y: { $y }.';
+		@return 100#{unquote($unit)};
+	}
+
+	@if ($unit) {
+		$return: $return#{unquote($unit)};
+	}
+
+	@return $return;
+}

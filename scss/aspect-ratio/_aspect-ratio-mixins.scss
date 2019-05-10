@@ -1,3 +1,5 @@
+@import "aspect-ratio-functions";
+
 ///
 /// Create a box element with a fixed aspect ratio via the css padding-hack.
 ///
@@ -6,20 +8,17 @@
 /// @group Aspect Ratios
 /// @author absolutholz
 ///
-/// @param {List|Map} $list [false] - A list or map with x and y coordinates of the desired ratio
-/// @param {Number} $x [false] - The x (horizontal) value of the desired ratio
-/// @param {Number} $y [false] - The y (vertical) value of the desired ratio
 /// @param {Bool} $pseudo [false] - Should the box be generated via a pseudo element.  Set this to true when flex-basis alone defines the parent width.
+/// @param {List|Map|String} $ratio [false] - The complete ratio. Use either this argument OR the next two.
+/// @param {Number} $x [1] - The x (horizontal) value of the desired ratio
+/// @param {Number} $y [1] - The y (vertical) value of the desired ratio
 /// @param {String} $unit ["%"] - The default CSS unit to be used. Most likely, if not the default `%` then maybe `vw`.
+/// @param {Number} $decimal-accuracy [2] - The number of decimal places to which the result should be rounded.
 ///
 /// @output Padding-top value to create the desired aspect ratio, either nested directly under the parent selector or, optionally, as a before pseudo element.
 ///
-@mixin aspect-ratio-box($list: false, $x: false, $y: false, $pseudo: false, $unit: "%") {
-	@if ($list) {
-		$padding: unquote(( nth($list, 2) / nth($list, 1) ) * 100 + $unit);
-	} @else {
-		$padding: unquote(( $y / $x ) * 100 + $unit);
-	}
+@mixin aspect-ratio-box($pseudo: false, $args...) {
+	$padding: calculate-aspect-ratio($args...);
 
 	@if $pseudo {
 		// use before so that z-indexing is not required for simple layering
