@@ -1,0 +1,63 @@
+@import "../type-checking/type-checking-functions";
+@import "breakpoint-variables";
+
+///
+/// Super primitive mixin for `min-width` and/or `max-width` media queries.
+///
+/// @author absolutholz
+/// @group Layout
+///
+/// @param {Number|String} $min-width [false] -
+/// @param {Number|String} $max-width [false] -
+/// @param {Map} $breakpoint-map [$breakpoints] -
+///
+/// @content
+///
+/// @throws Error - If the desired parameters cannot be resolved to valid widths
+///
+/// @output - A media query around the `@content`
+///
+/// @example
+/// 	@include mq(sm) {
+/// 		// CSS properties to be applied at a minimum width of the `sm` setting
+/// 	}
+///
+/// 	@include mq($max-width: 100vh) {
+/// 		// CSS properties to be applied up to a maximum width of 100vh
+/// 	}
+///
+/// 	@include mq(md, lg) {
+/// 		// CSS properties to be applied between the `md` and `lg` settings
+/// 	}
+///
+@mixin mq ($min-width: false, $max-width: false, $breakpoint-map: $breakpoints) {
+	@if (is-string($min-width)) {
+		@if (map-has-key($breakpoint-map, $min-width) and map-has-key(map-get($breakpoint-map, $min-width), "min-width")) {
+			$min-width: map-get(map-get($breakpoints, $min-width), "min-width");
+		} @else {
+			@error "No value found for `#{ $min-width }`";
+		}
+	}
+
+	@if (is-string($max-width)) {
+		@if (map-has-key($breakpoint-map, $max-width) and map-has-key(map-get($breakpoint-map, $max-width), "max-width")) {
+			$max-width: map-get(map-get($breakpoints, $max-width), "max-width");
+		} @else {
+			@error "No value found for `#{ $max-width }`";
+		}
+	}
+
+	@if ($min-width and not $max-width) {
+		@media (min-width: $min-width) {
+			@content;
+		}
+	} @else if ($min-width and $max-width) {
+		@media (min-width: $min-width) and (max-width: calc(#{$max-width} - 1px)) {
+			@content;
+		}
+	} @else if ($max-width and not $min-width) {
+		@media (max-width: $max-width) {
+			@content;
+		}
+	}
+}

@@ -1,9 +1,9 @@
-@import "./visually-hidden-variables";
+@import "visually-hidden-variables";
 
 ////
 /// See also Bootstrap 4 (beta) Reboot stack variables
 ///
-/// @group Visibility
+/// @group Layout
 /// @link http://davidwalsh.name/html5-boilerplate Style Scavenger: 7 CSS Snippets to Borrow from HTML5 Boilerplate
 /// @link https://accessible360.com/accessible360-blog/use-aria-label-screen-reader-text/ Should I use an aria-label or screen-reader only text?
 ///
@@ -14,6 +14,13 @@
 ///
 /// @author David Walsh
 /// @author absolutholz
+///
+/// @see {variable} $support-css-clip
+///
+/// @example
+///		.visually-hidden {
+/// 		@include visually-hidden();
+///		}
 ///
 @mixin visually-hidden () {
 	border: 0;
@@ -33,6 +40,17 @@
 /// Remove styles for visually hiding an element via the `visually-hidden` mixin
 ///
 /// @author absolutholz
+///
+/// @see {variable} $support-css-clip
+///
+/// @example
+///		.visually-hidden {
+/// 		@include visually-hidden();
+///
+///			@media (min-width: 960px) {
+/// 			@include visually-hidden-destroy();
+///			}
+///		}
 ///
 @mixin visually-hidden-destroy () {
 	@if ($support-css-clip) {
