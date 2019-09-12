@@ -1,0 +1,30 @@
+///
+/// List Reset
+///
+///	Ordered (_ol_) and Unordered (_ul_)
+///
+/// @group Resets
+/// @author absolutholz
+///
+/// @param {Boolean} $reset-vertical-margins true - Should the vertical margins also be reset to 0
+///
+/// @example scss - SCSS usage - Keyword aspect ratio from `$aspect-ratios` Map
+///		.selector {
+///			@include reset-list();
+///		}
+/// @example css - CSS output
+///		.selector {
+///			list-style: none;
+///			margin-bottom: 0;
+///			margin-top: 0;
+///			padding-left: 0;
+///		}
+///
+@mixin reset-list ($reset-vertical-margins: true) {
+	list-style: none;
+	@if ($reset-vertical-margins) {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+	padding-left: 0;
+}

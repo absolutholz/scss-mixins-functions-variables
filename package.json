@@ -1,6 +1,6 @@
 {
   "name": "scss-mixins-functions-variables",
-  "version": "1.2.1",
+  "version": "1.3.1",
   "description": "A collection of SCSS Mixins, Functions and Variables.",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,6 @@
   "homepage": "https://github.com/absolutholz/scss-mixins-and-functions#readme",
   "devDependencies": {
     "sass-lint": "^1.13.1",
-    "sassdoc": "^2.7.0"
+    "sassdoc": "^2.7.1"
   }
 }

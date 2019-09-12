@@ -1,0 +1,33 @@
+///
+/// Button Reset
+///
+/// @group Resets
+/// @author absolutholz
+///
+/// @param {Boolean} $reset-font true - Should the font properties be reset (inherited)
+/// @param {Boolean} $reset-margin true - Should the margins also be reset to 0
+///
+/// @example scss - SCSS usage - Keyword aspect ratio from `$aspect-ratios` Map
+///		.selector {
+///			@include reset-button();
+///		}
+/// @example css - CSS output
+///		.selector {
+///			background: none;
+///			border: 0;
+///			font: inherit;
+///			margin: 0;
+///			padding: 0;
+///		}
+///
+@mixin reset-button ($reset-font: true, $reset-margin: true) {
+	background: none;
+	border: 0;
+	@if ($reset-font) {
+		font: inherit;
+	}
+	@if ($reset-margin) {
+		margin: 0;
+	}
+	padding: 0;
+}
