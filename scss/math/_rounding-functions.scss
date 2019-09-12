@@ -4,8 +4,8 @@
 ///
 /// @group Math
 ///
-/// @param  {Number} $number A number to round
-/// @param  {Number} [$digits:0] Digits to output
+/// @param {Number} $number A number to round
+/// @param {Number} $digits [0] Digits to output
 ///
 /// @return {Number} A rounded number
 ////
@@ -13,7 +13,7 @@
 ///
 /// Round a number to specified digits.
 ///
-/// @param  {String} [$mode:round] (round|ceil|floor) How to round a number
+/// @param {String} $mode [round] (round|ceil|floor) How to round a number
 /// @example
 ///     decimal-round(0.333)    => 0
 ///     decimal-round(0.333, 1) => 0.3

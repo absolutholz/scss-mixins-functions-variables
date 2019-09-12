@@ -6,7 +6,7 @@
 /// @group Typography
 /// @author Jamie Wright
 ///
-/// @param $truncation-boundary [100%] - The maximum width of the text to truncate
+/// @param {String} $truncation-boundary [100%] - The maximum width of the text to truncate
 ///
 @mixin truncate-typography ($truncation-boundary: 100%) {
 	max-width: $truncation-boundary;
