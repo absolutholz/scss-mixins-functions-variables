@@ -5,12 +5,13 @@
 ///
 /// @group Shapes
 ///
-/// @param {String} $color [inherit] - Color of the triangle
-/// @param {Length} $direction [right] - Direction the triangle is to point
+/// @param {Color} $color [currentColor] - Color of the triangle
+/// @param {String} $direction [right] - Direction the triangle is to point
 /// @param {Length} $size [1em] - Size of the triangle's primary axis
 /// @param {Length} $secondary-axis-size [false] - Size of the triangle's secondary axis
+/// @param {Boolean} $display [false] - The code needs to be applied to a block-type element in order properly set dimensions. This argument can optionally add the necessary property.
 ///
-@mixin css-triangle($color: inherit, $direction: "right", $size: 1em, $secondary-axis-size: false) {
+@mixin css-triangle($color: currentColor, $direction: "right", $size: 1em, $secondary-axis-size: false, $display: false) {
 	@if not $secondary-axis-size {
 		$secondary-axis-size: $size;
 	}
@@ -31,6 +32,10 @@
 		border-bottom: $secondary-axis-size solid transparent;
 		border-right: $size solid $color;
 		border-top: $secondary-axis-size solid transparent;
+	}
+
+	@if $display {
+		display: $display;
 	}
 
 	height: 0;
