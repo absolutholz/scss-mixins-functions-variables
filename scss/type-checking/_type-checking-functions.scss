@@ -99,7 +99,8 @@
 /// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-angle($value) {
-	@return is-number($value) and index("deg" "rad" "grad" "turn", unit($value)) != null;
+	@return is-number($value) and index("deg" "rad" "grad" "turn", unit($value))
+		!= null;
 }
 
 ///
@@ -126,7 +127,9 @@
 /// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-relative-length($value) {
-	@return is-number($value) and index("em" "ex" "ch" "rem" "vw" "vh" "vmin" "vmax", unit($value)) != null;
+	@return is-number($value) and
+		index("em" "ex" "ch" "rem" "vw" "vh" "vmin" "vmax", unit($value)) !=
+		null;
 }
 
 ///
@@ -135,7 +138,8 @@
 /// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-absolute-length($value) {
-	@return is-number($value) and index("cm" "mm" "in" "px" "pt" "pc", unit($value)) != null;
+	@return is-number($value) and
+		index("cm" "mm" "in" "px" "pt" "pc", unit($value)) != null;
 }
 
 ///
@@ -162,7 +166,8 @@
 /// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-resolution($value) {
-	@return is-number($value) and index("dpi" "dpcm" "dppx", unit($value)) != null;
+	@return is-number($value) and index("dpi" "dpcm" "dppx", unit($value)) !=
+		null;
 }
 
 ///
@@ -171,5 +176,6 @@
 /// @link https://css-tricks.com/snippets/sass/advanced-type-checking/
 ///
 @function is-position($value) {
-	@return is-length($value) or is-percentage($value) or index("top" "right" "bottom" "left" "center", $value) != null;
+	@return is-length($value) or is-percentage($value) or
+		index("top" "right" "bottom" "left" "center", $value) != null;
 }

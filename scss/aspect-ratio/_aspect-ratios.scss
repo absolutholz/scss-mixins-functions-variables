@@ -7,7 +7,17 @@
 .aspect-ratio {
 	@each $ratio-key, $ratio in $aspect-ratios {
 		&--#{$ratio-key} {
-			@include aspect-ratio-box($list: false, nth(map-get($ratio, "dimensions"), 1), nth(map-get($ratio, "dimensions"), 2));
+			@include aspect-ratio-box(
+				$list: false,
+				nth(
+					map-get($ratio, "dimensions"),
+					1
+				),
+				nth(
+					map-get($ratio, "dimensions"),
+					2
+				)
+			);
 		}
 	}
 }

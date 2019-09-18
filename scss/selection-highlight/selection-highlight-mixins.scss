@@ -6,7 +6,11 @@
 ///
 /// @access private
 ///
-@mixin _selection-highlight($background-color: false, $typography-color: false, $text-shadow: none) {
+@mixin _selection-highlight(
+	$background-color: false,
+	$typography-color: false,
+	$text-shadow: none
+) {
 	@if ($background-color) {
 		background-color: $background-color;
 	}

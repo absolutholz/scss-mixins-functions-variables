@@ -4,9 +4,11 @@
   "description": "A collection of SCSS Mixins, Functions and Variables.",
   "main": "index.js",
   "scripts": {
-    "lint": "sass-lint scss/**/*.scss --verbose --no-exit",
+    "styles:lint": "stylelint --fix \"**/*.scss\"",
+    "styles:prettier": "prettier --write \"**/*.scss\"",
+    "styles": "npm run styles:lint && npm run styles:prettier",
     "document": "sassdoc scss/**/*.scss --dest docs --verbose",
-    "build": "npm run lint && npm run document"
+    "build": "npm run styles && npm run document"
   },
   "keywords": [
     "scss",
@@ -26,7 +28,12 @@
   },
   "homepage": "https://github.com/absolutholz/scss-mixins-and-functions#readme",
   "devDependencies": {
-    "sass-lint": "^1.13.1",
-    "sassdoc": "^2.7.1"
+    "prettier": "^1.18.2",
+    "sassdoc": "^2.7.1",
+    "stylelint": "^11.0.0",
+    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.11.0"
   }
 }

@@ -20,15 +20,12 @@ $default-language: "en" !default;
 ///
 /// @output CSS selector with corresponding `quotes` values
 ///
-@mixin quotes ($languages: $default-language) {
+@mixin quotes($languages: $default-language) {
 	@each $language in $languages {
-
 		@if map-has-key($quotation-marks, $language) {
-
-			[lang=#{$language}] {
+			[lang="#{$language}"] {
 				quotes: map-get($quotation-marks, $language);
 			}
-
 		} @else {
 			@warn "Quotation mark settings not found for given language " $language;
 		}

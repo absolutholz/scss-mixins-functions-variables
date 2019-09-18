@@ -22,11 +22,12 @@
 /// 		@include visually-hidden();
 ///		}
 ///
-@mixin visually-hidden () {
+@mixin visually-hidden() {
 	border: 0;
 	@if ($support-css-clip) {
 		clip: rect(0 0 0 0);
 	}
+
 	clip-path: polygon(0 0, 0 0, 0 0);
 	height: 1px;
 	margin: -1px;
@@ -52,10 +53,11 @@
 ///			}
 ///		}
 ///
-@mixin visually-hidden-destroy () {
+@mixin visually-hidden-destroy() {
 	@if ($support-css-clip) {
 		clip: auto;
 	}
+
 	clip-path: none;
 	height: auto;
 	margin: 0;
@@ -70,7 +72,7 @@
 /// @author David Walsh
 /// @author absolutholz
 ///
-@mixin visually-hidden-focusable () {
+@mixin visually-hidden-focusable() {
 	&:focus,
 	&:active {
 		@include visually-hidden-destroy();

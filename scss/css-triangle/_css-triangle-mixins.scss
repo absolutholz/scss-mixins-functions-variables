@@ -11,7 +11,13 @@
 /// @param {Length} $secondary-axis-size [false] - Size of the triangle's secondary axis
 /// @param {Boolean} $display [false] - The code needs to be applied to a block-type element in order properly set dimensions. This argument can optionally add the necessary property.
 ///
-@mixin css-triangle($color: currentColor, $direction: "right", $size: 1em, $secondary-axis-size: false, $display: false) {
+@mixin css-triangle(
+	$color: currentColor,
+	$direction: "right",
+	$size: 1em,
+	$secondary-axis-size: false,
+	$display: false
+) {
 	@if not $secondary-axis-size {
 		$secondary-axis-size: $size;
 	}
@@ -28,7 +34,7 @@
 		border-bottom: $secondary-axis-size solid transparent;
 		border-left: $size solid $color;
 		border-top: $secondary-axis-size solid transparent;
-	} @else if  $direction == "left" {
+	} @else if $direction == "left" {
 		border-bottom: $secondary-axis-size solid transparent;
 		border-right: $size solid $color;
 		border-top: $secondary-axis-size solid transparent;

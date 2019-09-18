@@ -20,7 +20,7 @@
 ///			padding: 0;
 ///		}
 ///
-@mixin reset-button ($reset-font: true, $reset-margin: true) {
+@mixin reset-button($reset-font: true, $reset-margin: true) {
 	background: none;
 	border: 0;
 	@if ($reset-font) {
@@ -29,5 +29,6 @@
 	@if ($reset-margin) {
 		margin: 0;
 	}
+
 	padding: 0;
 }

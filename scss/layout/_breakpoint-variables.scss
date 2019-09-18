@@ -11,22 +11,22 @@ $breakpoints: (
 		"gutter": 15px,
 		"vertical-gutter": 24px,
 		"columns": 12,
-		"offset": 15px,
+		"offset": 15px
 	),
 	sm: (
-		"min-width": 576px,
+		"min-width": 576px
 	),
 	md: (
 		"min-width": 768px,
-		"offset": 30px,
+		"offset": 30px
 	),
 	lg: (
 		"min-width": 960px,
 		"gutter": 30px,
-		"offset": 47px,
+		"offset": 47px
 	),
 	xl: (
 		"min-width": 1200px,
-		"vertical-gutter": 24px,
-	),
+		"vertical-gutter": 24px
+	)
 ) !default;

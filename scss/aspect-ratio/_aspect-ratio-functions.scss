@@ -38,7 +38,13 @@
 ///			min-height: 56.25vw;
 ///		}
 ///
-@function calculate-aspect-ratio($ratio: false, $x: 1, $y: false, $unit: "%", $decimal-accuracy: 2) {
+@function calculate-aspect-ratio(
+	$ratio: false,
+	$x: 1,
+	$y: false,
+	$unit: "%",
+	$decimal-accuracy: 2
+) {
 	$return: "";
 	$x-size: $x;
 	$y-size: $y;
@@ -47,11 +53,15 @@
 		@if (is-list($ratio)) {
 			$x-size: nth($ratio, 1);
 			$y-size: nth($ratio, 2);
-
-		} @else if (is-map($ratio) and map-has-key($ratio, "x") and map-has-key($ratio, "y")) {
+		} @else if
+			(
+				is-map($ratio) and
+					map-has-key($ratio, "x") and
+					map-has-key($ratio, "y")
+			)
+		{
 			$x-size: map-get($ratio, "x");
 			$y-size: map-get($ratio, "y");
-
 		} @else if (is-string($ratio) and map-has-key($aspect-ratios, $ratio)) {
 			$map: map-get($aspect-ratios, $ratio);
 			$list: map-get($map, "dimensions");
@@ -62,7 +72,6 @@
 
 	@if (is-number($x-size) and is-number($y-size)) {
 		$return: decimal-round(($y-size / $x-size) * 100, $decimal-accuracy);
-
 	} @else {
 		@warn "No valid aspect ratio could be found for ratio: #{ $ratio }, x: { $x }, y: { $y }.";
 		@return 100#{unquote($unit)};
@@ -89,8 +98,10 @@
 		$key: "#{nth($dimensions, 1)}x#{nth($dimensions, 2)}";
 	}
 
-	@return ($key: (
-		"description": $description,
-		"dimensions": $dimensions,
-	));
+	@return (
+		$key: (
+			"description": $description,
+			"dimensions": $dimensions
+		)
+	);
 }

@@ -20,11 +20,12 @@
 ///			padding-left: 0;
 ///		}
 ///
-@mixin reset-list ($reset-vertical-margins: true) {
+@mixin reset-list($reset-vertical-margins: true) {
 	list-style: none;
 	@if ($reset-vertical-margins) {
 		margin-bottom: 0;
 		margin-top: 0;
 	}
+
 	padding-left: 0;
 }
