@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  node:
+    container_name: scss_node
+    build:
+      context: .
+      dockerfile: ./docker-config/node/Dockerfile
+    working_dir: /var/www/scss-stuff
+    ports:
+      - 8080:8080 # http-server
+    volumes:
+      - ./:/var/www/scss-stuff
+      - /var/www/scss-stuff/node_modules
+    command: bash -c "npm run serve"
