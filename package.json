@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "sass-lint scss/**/*.scss --verbose --no-exit",
     "document": "sassdoc scss/**/*.scss --dest docs --verbose",
-    "build": "npm run lint && npm run document"
+    "build": "npm run lint && npm run document",
+    "serve": "http-server ./docs"
   },
   "keywords": [
     "scss",
@@ -26,6 +27,7 @@
   },
   "homepage": "https://github.com/absolutholz/scss-mixins-and-functions#readme",
   "devDependencies": {
+    "http-server": "^0.12.1",
     "sass-lint": "^1.13.1",
     "sassdoc": "^2.7.1"
   }
